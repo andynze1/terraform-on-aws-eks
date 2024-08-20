@@ -2,7 +2,7 @@
 variable "cluster_name" {
   description = "Name of the EKS cluster. Also used as a prefix in names of related resources."
   type        = string
-  default     = "eksdemo"
+  default     = "local.eks_cluster_name"
 }
 
 variable "cluster_service_ipv4_cidr" {
@@ -13,7 +13,7 @@ variable "cluster_service_ipv4_cidr" {
 
 variable "cluster_version" {
   description = "Kubernetes minor version to use for the EKS cluster (for example 1.21)"
-  type = string
+  type        = string
   default     = null
 }
 variable "cluster_endpoint_private_access" {

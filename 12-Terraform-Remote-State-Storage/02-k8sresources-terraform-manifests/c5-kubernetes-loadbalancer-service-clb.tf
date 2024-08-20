@@ -1,4 +1,6 @@
 # Kubernetes Service Manifest (Type: Load Balancer)
+
+
 resource "kubernetes_service_v1" "lb_service" {
   metadata {
     name = "myapp1-lb-service"

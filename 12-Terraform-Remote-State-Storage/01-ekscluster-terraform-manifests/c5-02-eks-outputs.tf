@@ -14,6 +14,11 @@ output "cluster_certificate_authority_data" {
   value       = aws_eks_cluster.eks_cluster.certificate_authority[0].data
 }
 
+output "oidc_provider_arn" {
+  value = aws_iam_openid_connect_provider.oidc_provider.arn
+}
+
+
 output "cluster_endpoint" {
   description = "The endpoint for your EKS Kubernetes API."
   value       = aws_eks_cluster.eks_cluster.endpoint
@@ -26,7 +31,7 @@ output "cluster_version" {
 
 output "cluster_iam_role_name" {
   description = "IAM role name of the EKS cluster."
-  value       = aws_iam_role.eks_master_role.name 
+  value       = aws_iam_role.eks_master_role.name
 }
 
 output "cluster_iam_role_arn" {
@@ -57,13 +62,26 @@ output "node_group_public_arn" {
 
 output "node_group_public_status" {
   description = "Public Node Group status"
-  value       = aws_eks_node_group.eks_ng_public.status 
+  value       = aws_eks_node_group.eks_ng_public.status
 }
 
 output "node_group_public_version" {
   description = "Public Node Group Kubernetes Version"
   value       = aws_eks_node_group.eks_ng_public.version
 }
+
+output "oidc_provider_url" {
+  value = aws_eks_cluster.eks_cluster.identity[0].oidc[0].issuer
+}
+
+output "oidc_thumbprint" {
+  value = aws_eks_cluster.eks_cluster.certificate_authority.0.data
+}
+
+output "cluster_identity_oidc_issuer" {
+  value = aws_eks_cluster.eks_cluster.identity[0].oidc[0].issuer
+}
+
 
 # EKS Node Group Outputs - Private
 /*

@@ -1,7 +1,8 @@
 # Generic Variables
-aws_region = "us-east-1"
-environment = "dev"
+aws_region       = "us-east-1"
+environment      = "dev"
 business_divsion = "hr"
+# vpc_owner_id = "461086874723"
 
 
 

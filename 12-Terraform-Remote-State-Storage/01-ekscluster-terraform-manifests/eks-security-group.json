@@ -1,0 +1,370 @@
+{
+    "SecurityGroups": [
+        {
+            "Description": "default VPC security group",
+            "GroupName": "default",
+            "IpPermissions": [
+                {
+                    "IpProtocol": "-1",
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "UserIdGroupPairs": [
+                        {
+                            "GroupId": "sg-0ce8cf01087201119",
+                            "UserId": "461086874723"
+                        }
+                    ]
+                },
+                {
+                    "FromPort": 22,
+                    "IpProtocol": "tcp",
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 22,
+                    "UserIdGroupPairs": []
+                }
+            ],
+            "OwnerId": "461086874723",
+            "GroupId": "sg-0ce8cf01087201119",
+            "IpPermissionsEgress": [
+                {
+                    "IpProtocol": "-1",
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "UserIdGroupPairs": []
+                }
+            ],
+            "VpcId": "vpc-0dfef72198779c002"
+        },
+        {
+            "Description": "EKS created security group applied to ENI that is attached to EKS Control Plane master nodes, as well as any managed workloads.",
+            "GroupName": "eks-cluster-sg-hr-dev-eksdemo1-1315923164",
+            "IpPermissions": [
+                {
+                    "IpProtocol": "-1",
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "UserIdGroupPairs": [
+                        {
+                            "GroupId": "sg-0b00337479ffd8876",
+                            "UserId": "461086874723"
+                        }
+                    ]
+                }
+            ],
+            "OwnerId": "461086874723",
+            "GroupId": "sg-0b00337479ffd8876",
+            "IpPermissionsEgress": [
+                {
+                    "IpProtocol": "-1",
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "UserIdGroupPairs": []
+                }
+            ],
+            "Tags": [
+                {
+                    "Key": "aws:eks:cluster-name",
+                    "Value": "hr-dev-eksdemo1"
+                },
+                {
+                    "Key": "Name",
+                    "Value": "eks-cluster-sg-hr-dev-eksdemo1-1315923164"
+                },
+                {
+                    "Key": "kubernetes.io/cluster/hr-dev-eksdemo1",
+                    "Value": "owned"
+                }
+            ],
+            "VpcId": "vpc-0f034d7fb82e89a5b"
+        },
+        {
+            "Description": "mysql-client-SG",
+            "GroupName": "mysql-client-SG",
+            "IpPermissions": [
+                {
+                    "FromPort": 22,
+                    "IpProtocol": "tcp",
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 22,
+                    "UserIdGroupPairs": []
+                }
+            ],
+            "OwnerId": "461086874723",
+            "GroupId": "sg-08ea7a8609955d811",
+            "IpPermissionsEgress": [
+                {
+                    "IpProtocol": "-1",
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "UserIdGroupPairs": []
+                }
+            ],
+            "VpcId": "vpc-0dfef72198779c002"
+        },
+        {
+            "Description": "Custom security group for EKS remote access",
+            "GroupName": "eks-remote-access",
+            "IpPermissions": [
+                {
+                    "FromPort": 31280,
+                    "IpProtocol": "tcp",
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 31280,
+                    "UserIdGroupPairs": []
+                },
+                {
+                    "FromPort": 22,
+                    "IpProtocol": "tcp",
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 22,
+                    "UserIdGroupPairs": []
+                },
+                {
+                    "FromPort": 10250,
+                    "IpProtocol": "tcp",
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 10250,
+                    "UserIdGroupPairs": []
+                },
+                {
+                    "FromPort": 443,
+                    "IpProtocol": "tcp",
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 443,
+                    "UserIdGroupPairs": []
+                }
+            ],
+            "OwnerId": "461086874723",
+            "GroupId": "sg-00765aec6283aaa3d",
+            "IpPermissionsEgress": [
+                {
+                    "IpProtocol": "-1",
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "UserIdGroupPairs": []
+                }
+            ],
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "eks-remote-access"
+                }
+            ],
+            "VpcId": "vpc-0f034d7fb82e89a5b"
+        },
+        {
+            "Description": "kops-SG",
+            "GroupName": "kops-SG",
+            "IpPermissions": [
+                {
+                    "FromPort": 22,
+                    "IpProtocol": "tcp",
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 22,
+                    "UserIdGroupPairs": []
+                }
+            ],
+            "OwnerId": "461086874723",
+            "GroupId": "sg-0675f4ce0ea3c934e",
+            "IpPermissionsEgress": [
+                {
+                    "IpProtocol": "-1",
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "UserIdGroupPairs": []
+                }
+            ],
+            "VpcId": "vpc-0dfef72198779c002"
+        },
+        {
+            "Description": "Security Group with SSH port open for everybody (IPv4 CIDR), egress ports are all world open",
+            "GroupName": "hr-dev-jenkins-sg-20240820162606276600000009",
+            "IpPermissions": [
+                {
+                    "FromPort": 9000,
+                    "IpProtocol": "tcp",
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0",
+                            "Description": "Allow SonarQube"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 9000,
+                    "UserIdGroupPairs": []
+                },
+                {
+                    "FromPort": 8080,
+                    "IpProtocol": "tcp",
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0",
+                            "Description": "Allow Jenkins"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 8080,
+                    "UserIdGroupPairs": []
+                },
+                {
+                    "FromPort": 22,
+                    "IpProtocol": "tcp",
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0",
+                            "Description": "Allow SSH"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 22,
+                    "UserIdGroupPairs": []
+                },
+                {
+                    "FromPort": 8081,
+                    "IpProtocol": "tcp",
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0",
+                            "Description": "Allow Nexus"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 8081,
+                    "UserIdGroupPairs": []
+                }
+            ],
+            "OwnerId": "461086874723",
+            "GroupId": "sg-05ed336137a13d39f",
+            "IpPermissionsEgress": [
+                {
+                    "IpProtocol": "-1",
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0",
+                            "Description": "All protocols"
+                        }
+                    ],
+                    "Ipv6Ranges": [
+                        {
+                            "CidrIpv6": "::/0",
+                            "Description": "All protocols"
+                        }
+                    ],
+                    "PrefixListIds": [],
+                    "UserIdGroupPairs": []
+                }
+            ],
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "hr-dev-jenkins-sg"
+                },
+                {
+                    "Key": "owners",
+                    "Value": "hr"
+                },
+                {
+                    "Key": "environment",
+                    "Value": "dev"
+                }
+            ],
+            "VpcId": "vpc-0f034d7fb82e89a5b"
+        },
+        {
+            "Description": "default VPC security group",
+            "GroupName": "default",
+            "IpPermissions": [],
+            "OwnerId": "461086874723",
+            "GroupId": "sg-01090dd3dd3262660",
+            "IpPermissionsEgress": [],
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "hr-dev-eksdemo1-default"
+                },
+                {
+                    "Key": "owners",
+                    "Value": "hr"
+                },
+                {
+                    "Key": "environment",
+                    "Value": "dev"
+                }
+            ],
+            "VpcId": "vpc-0f034d7fb82e89a5b"
+        }
+    ]
+}

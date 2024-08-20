@@ -1,0 +1,53 @@
+{
+    "nodegroup": {
+        "nodegroupName": "hr-dev-eks-ng-public",
+        "nodegroupArn": "arn:aws:eks:us-east-1:461086874723:nodegroup/hr-dev-eksdemo1/hr-dev-eks-ng-public/b4c8b89c-cdd2-e7ee-87e7-8bd821880f9c",
+        "clusterName": "hr-dev-eksdemo1",
+        "releaseVersion": "ami-0f017efb82ee7b952",
+        "createdAt": "2024-08-20T14:18:08.082000-05:00",
+        "modifiedAt": "2024-08-20T14:41:30.517000-05:00",
+        "status": "CREATE_FAILED",
+        "capacityType": "ON_DEMAND",
+        "scalingConfig": {
+            "minSize": 1,
+            "maxSize": 2,
+            "desiredSize": 2
+        },
+        "subnets": [
+            "subnet-0848f551c7e6f67e9",
+            "subnet-076ea28e3948e4509"
+        ],
+        "amiType": "CUSTOM",
+        "nodeRole": "arn:aws:iam::461086874723:role/hr-dev-eks-nodegroup-role",
+        "resources": {
+            "autoScalingGroups": [
+                {
+                    "name": "eks-hr-dev-eks-ng-public-b4c8b89c-cdd2-e7ee-87e7-8bd821880f9c"
+                }
+            ]
+        },
+        "health": {
+            "issues": [
+                {
+                    "code": "NodeCreationFailure",
+                    "message": "Instances failed to join the kubernetes cluster",
+                    "resourceIds": [
+                        "i-001c2cd9b99b1d940",
+                        "i-0323848204a4292ea"
+                    ]
+                }
+            ]
+        },
+        "updateConfig": {
+            "maxUnavailable": 1
+        },
+        "launchTemplate": {
+            "name": "eks-node-group-launch-template2024082016260815260000000a",
+            "version": "1",
+            "id": "lt-022232d785af917ae"
+        },
+        "tags": {
+            "Name": "Public-Node-Group"
+        }
+    }
+}
