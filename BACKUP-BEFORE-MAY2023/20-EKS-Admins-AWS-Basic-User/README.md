@@ -32,7 +32,7 @@ terraform apply -auto-approve
 
 # Configure kubeconfig for kubectl
 aws eks --region <region-code> update-kubeconfig --name <cluster_name>
-aws eks --region us-east-1 update-kubeconfig --name hr-dev-eksdemo1
+aws eks --region us-east-1 update-kubeconfig --name dml-dev-eksdemo1
 
 # Verify Kubernetes Worker Nodes using kubectl
 kubectl get nodes
@@ -43,7 +43,7 @@ kubectl get nodes -o wide
 ```t
 # Get current user configured in AWS CLI
 aws sts get-caller-identity
-Observation: Should see the user "kalyandev" from "default" profile
+Observation: Should see the user "admin" from "default" profile
 
 # Create IAM User
 aws iam create-user --user-name eksadmin2
@@ -77,12 +77,12 @@ User: eksadmin2
   - **Username:** eksadmin2
   - **Password:** @EKSUser101
 - **Access URL:** https://console.aws.amazon.com/eks/home?region=us-east-1  
-- Go to Services -> Elastic Kubernetes Service -> Clusters -> Click on **hr-dev-eksdemo1**
+- Go to Services -> Elastic Kubernetes Service -> Clusters -> Click on **dml-dev-eksdemo1**
 - **Error**
 ```t
 # Error 
 Error loading clusters
-User: arn:aws:iam::180789647333:user/eksadmin2 is not authorized to perform: eks:ListClusters on resource: arn:aws:eks:us-east-1:180789647333:cluster/*
+User: arn:aws:iam::461086874723:user/eksadmin2 is not authorized to perform: eks:ListClusters on resource: arn:aws:eks:us-east-1:461086874723:cluster/*
 ```
 
 ## Step-06: Configure Kubernetes configmap aws-auth with eksadmin2 user
@@ -90,7 +90,7 @@ User: arn:aws:iam::180789647333:user/eksadmin2 is not authorized to perform: eks
 # Get current user configured in AWS CLI
 aws sts get-caller-identity
 Observation:
-1. We can update aws-auth configmap using "eksadmin1" user or cluster creator user "kalyandev"
+1. We can update aws-auth configmap using "eksadmin1" user or cluster creator user "admin"
 
 # Get IAM User and make a note of arn
 aws iam get-user --user-name eksadmin2
@@ -107,11 +107,11 @@ kubectl -n kube-system edit configmap aws-auth
 
 ## mapUsers TEMPLATE - Replaced with IAM User ARN
   mapUsers: |
-    - userarn: arn:aws:iam::180789647333:user/eksadmin1
+    - userarn: arn:aws:iam::461086874723:user/eksadmin1
       username: eksadmin1
       groups:
         - system:masters     
-    - userarn: arn:aws:iam::180789647333:user/eksadmin2
+    - userarn: arn:aws:iam::461086874723:user/eksadmin2
       username: eksadmin2
       groups:
         - system:masters              
@@ -130,14 +130,14 @@ data:
     - groups:
       - system:bootstrappers
       - system:nodes
-      rolearn: arn:aws:iam::180789647333:role/hr-dev-eks-nodegroup-role
+      rolearn: arn:aws:iam::461086874723:role/dml-dev-eks-nodegroup-role
       username: system:node:{{EC2PrivateDNSName}}
   mapUsers: |
-    - userarn: arn:aws:iam::180789647333:user/eksadmin1
+    - userarn: arn:aws:iam::461086874723:user/eksadmin1
       username: eksadmin1
       groups:
         - system:masters
-    - userarn: arn:aws:iam::180789647333:user/eksadmin2
+    - userarn: arn:aws:iam::461086874723:user/eksadmin2
       username: eksadmin2
       groups:
         - system:masters
@@ -180,7 +180,7 @@ cat $HOME/.kube/config
 
 # Configure kubeconfig for kubectl with AWS CLI Profile eksadmin2
 aws eks --region <region-code> update-kubeconfig --name <cluster_name> --profile <AWS-CLI-Profile-NAME>
-aws eks --region us-east-1 update-kubeconfig --name hr-dev-eksdemo1 --profile eksadmin2
+aws eks --region us-east-1 update-kubeconfig --name dml-dev-eksdemo1 --profile eksadmin2
 Observation:
 1. It should fail
 
@@ -192,9 +192,9 @@ cat $HOME/.kube/config
 Observation: At the end of kubeconfig file we find that AWS_PROFILE it is using is "eksadmin2" profile 
 
 ## ERROR MESSAGE
-Kalyans-MacBook-Pro:01-ekscluster-terraform-manifests kdaida$ aws eks --region us-east-1 update-kubeconfig --name hr-dev-eksdemo1 --profile eksadmin2
+Kalyans-MacBook-Pro:01-ekscluster-terraform-manifests kdaida$ aws eks --region us-east-1 update-kubeconfig --name dml-dev-eksdemo1 --profile eksadmin2
 
-An error occurred (AccessDeniedException) when calling the DescribeCluster operation: User: arn:aws:iam::180789647333:user/eksadmin2 is not authorized to perform: eks:DescribeCluster on resource: arn:aws:eks:us-east-1:180789647333:cluster/hr-dev-eksdemo1
+An error occurred (AccessDeniedException) when calling the DescribeCluster operation: User: arn:aws:iam::461086874723:user/eksadmin2 is not authorized to perform: eks:DescribeCluster on resource: arn:aws:eks:us-east-1:461086874723:cluster/dml-dev-eksdemo1
 Kalyans-MacBook-Pro:01-ekscluster-terraform-manifests kdaida$ 
 ```
 
@@ -203,7 +203,7 @@ Kalyans-MacBook-Pro:01-ekscluster-terraform-manifests kdaida$
 ```t
 # Get current user configured in AWS CLI
 aws sts get-caller-identity
-Observation: Should see the user "kalyandev" (EKS_Cluster_Create_User) from default profile
+Observation: Should see the user "admin" (EKS_Cluster_Create_User) from default profile
 
 # Create IAM Policy
 cd 20-EKS-Admins-AWS-Basic-User/iam-files
@@ -211,7 +211,7 @@ aws iam create-policy --policy-name eks-full-access-policy --policy-document fil
 
 # Attach Policy to eksadmin2 user (Update ACCOUNT-ID and Username)
 aws iam attach-user-policy --policy-arn <POLICY-ARN> --user-name <USER-NAME>
-aws iam attach-user-policy --policy-arn arn:aws:iam::180789647333:policy/eks-full-access-policy --user-name eksadmin2
+aws iam attach-user-policy --policy-arn arn:aws:iam::461086874723:policy/eks-full-access-policy --user-name eksadmin2
 ```
 ```json
 {
@@ -234,7 +234,7 @@ aws iam attach-user-policy --policy-arn arn:aws:iam::180789647333:policy/eks-ful
 - Login to AWS Mgmt Console
   - **Username:** eksadmin2
   - **Password:** @EKSUser101
-- Go to Services -> Elastic Kubernetes Service -> Clusters -> Click on **hr-dev-eksdemo1**
+- Go to Services -> Elastic Kubernetes Service -> Clusters -> Click on **dml-dev-eksdemo1**
 - All 3 tabs should be accessible to us without any issues with eksadmin1 user
   - Overview Tab
   - Workloads Tab
@@ -244,7 +244,7 @@ aws iam attach-user-policy --policy-arn arn:aws:iam::180789647333:policy/eks-ful
 ```t
 # Get current user configured in AWS CLI
 aws sts get-caller-identity
-Observation: Should see the user "kalyandev" (EKS_Cluster_Create_User) from default profile
+Observation: Should see the user "admin" (EKS_Cluster_Create_User) from default profile
 
 # Clean-Up kubeconfig
 >$HOME/.kube/config
@@ -252,7 +252,7 @@ cat $HOME/.kube/config
 
 # Configure kubeconfig for kubectl with AWS CLI Profile eksadmin2
 aws eks --region <region-code> update-kubeconfig --name <cluster_name> --profile <AWS-CLI-Profile-NAME>
-aws eks --region us-east-1 update-kubeconfig --name hr-dev-eksdemo1 --profile eksadmin2
+aws eks --region us-east-1 update-kubeconfig --name dml-dev-eksdemo1 --profile eksadmin2
 Observation:
 1. It should pass
 
@@ -270,7 +270,7 @@ kubectl get nodes
 ```t
 # Get current user configured in AWS CLI
 aws sts get-caller-identity
-Observation: Should see the user "kalyandev" (EKS_Cluster_Create_User) from default profile
+Observation: Should see the user "admin" (EKS_Cluster_Create_User) from default profile
 
 # Delete IAM User
 Login to AWS Mgmt Console -> Services -> IAM  -> Users
@@ -285,7 +285,7 @@ Delete IAM Policy: eks-full-access-policy
 ```t
 # Get current user configured in AWS CLI
 aws sts get-caller-identity
-Observation: Should see the user "kalyandev" (EKS_Cluster_Create_User) from default profile
+Observation: Should see the user "admin" (EKS_Cluster_Create_User) from default profile
 
 # Change Directory
 cd 19-EKS-Admins-AWS-Admin-User/01-ekscluster-terraform-manifests/
@@ -298,11 +298,11 @@ rm -rf .terraform*
 ## Step-14: Clean-up AWS CLI Profiles
 ```t
 # Clean-up AWS Credentials File
-vi /Users/kalyanreddy/.aws/credentials
+vi /Users/andynze/.aws/credentials
 Remove eksadmin1 and eksadmin2 creds
 
 # Clean-Up AWS Config File
-vi /Users/kalyanreddy/.aws/config 
+vi /Users/andynze/.aws/config 
 Remove eksadmin1 and eksadmin2 profiles
 
 # List Profiles - AWS CLI

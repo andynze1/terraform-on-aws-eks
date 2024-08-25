@@ -33,7 +33,7 @@ metadata:
     alb.ingress.kubernetes.io/unhealthy-threshold-count: '2'   
     ## SSL Settings
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}, {"HTTP":80}]'
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:180789647333:certificate/0d86500a-08b3-4f17-8fb4-f09532ba0522
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:461086874723:certificate/0d86500a-08b3-4f17-8fb4-f09532ba0522
     #alb.ingress.kubernetes.io/ssl-policy: ELBSecurityPolicy-TLS-1-1-2017-01 #Optional (Picks default if not used)    
     # SSL Redirect Setting
     alb.ingress.kubernetes.io/ssl-redirect: '443'
@@ -161,7 +161,7 @@ kubectl delete -f 04-kube-manifests-ingress-nvhr/
 
 
 ## Step-06: Review Terraform Manifests 
-- **Project Folder:** 05-ingress-nvhr-terraform-manifests
+- **Project Folder:** 05-ingress-nvdml-terraform-manifests
 1. c1-versions.tf
 2. c2-remote-state-datasource.tf
 3. c3-providers.tf
@@ -175,7 +175,7 @@ kubectl delete -f 04-kube-manifests-ingress-nvhr/
 
 
 ## Step-07: c10-kubernetes-ingress-service.tf
-- **Project Folder:** 05-ingress-nvhr-terraform-manifests
+- **Project Folder:** 05-ingress-nvdml-terraform-manifests
 - Update name based virtual host routing related changes. 
 ```t
 # Kubernetes Service Manifest (Type: Load Balancer)
@@ -266,7 +266,7 @@ resource "kubernetes_ingress_v1" "ingress" {
 ## Step-08: Execute Terraform Commands
 ```t
 # Change Directory 
-cd 05-ingress-nvhr-terraform-manifests
+cd 05-ingress-nvdml-terraform-manifests
 
 # Terraform Initialize
 terraform init
@@ -332,7 +332,7 @@ http://tfdefault101.stacksimplify.com
 ## Step-14: Clean-Up Ingress
 ```t
 # Change Directory 
-cd 05-ingress-nvhr-terraform-manifests
+cd 05-ingress-nvdml-terraform-manifests
 
 # Terraform Destroy
 terraform apply -destroy -auto-approve

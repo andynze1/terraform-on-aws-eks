@@ -1,11 +1,11 @@
 {
     "cluster": {
-        "name": "hr-dev-eksdemo1",
-        "arn": "arn:aws:eks:us-east-1:461086874723:cluster/hr-dev-eksdemo1",
+        "name": "dml-dev-eksdemo1",
+        "arn": "arn:aws:eks:us-east-1:461086874723:cluster/dml-dev-eksdemo1",
         "createdAt": "2024-08-20T11:26:21.077000-05:00",
         "version": "1.30",
         "endpoint": "https://BE5C565B2CD64708110C73498F6B8E1A.gr7.us-east-1.eks.amazonaws.com",
-        "roleArn": "arn:aws:iam::461086874723:role/hr-dev-eks-master-role",
+        "roleArn": "arn:aws:iam::461086874723:role/dml-dev-eks-master-role",
         "resourcesVpcConfig": {
             "subnetIds": [
                 "subnet-0848f551c7e6f67e9",

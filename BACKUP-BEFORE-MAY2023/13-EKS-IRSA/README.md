@@ -115,7 +115,7 @@ output "aws_iam_openid_connect_provider_extract_from_arn" {
 - **Sample Output for reference**
 ```t
 # Sample Outputs for Reference
-aws_iam_openid_connect_provider_arn = "arn:aws:iam::180789647333:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/A9DED4A4FA341C2A5D985A260650F232"
+aws_iam_openid_connect_provider_arn = "arn:aws:iam::461086874723:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/A9DED4A4FA341C2A5D985A260650F232"
 aws_iam_openid_connect_provider_extract_from_arn = "oidc.eks.us-east-1.amazonaws.com/id/A9DED4A4FA341C2A5D985A260650F232"
 ```
 
@@ -140,14 +140,14 @@ terraform apply -auto-approve
 ```t
 # Configure kubeconfig for kubectl
 aws eks --region <region-code> update-kubeconfig --name <cluster_name>
-aws eks --region us-east-1 update-kubeconfig --name hr-dev-eksdemo1
+aws eks --region us-east-1 update-kubeconfig --name dml-dev-eksdemo1
 
 # Verify Kubernetes Worker Nodes using kubectl
 kubectl get nodes
 kubectl get nodes -o wide
 
 # Stop EC2 Bastion Host
-Go to Services -> EC2 -> Instances -> hr-dev-BastionHost -> Instance State -> Stop
+Go to Services -> EC2 -> Instances -> dml-dev-BastionHost -> Instance State -> Stop
 ```
 
 ## Step-10: EKS OpenID Connect Well Known Configuration URL
@@ -155,7 +155,7 @@ Go to Services -> EC2 -> Instances -> hr-dev-BastionHost -> Instance State -> St
 - **Discovery:** Defines how Clients dynamically discover information about OpenID Providers
 ```t
 # Get OpenID Connect provider URL for EKS Cluster
-Go to Services -> EKS -> hr-dev-eksdemo1 -> Configuration -> Details -> OpenID Connect provider URL
+Go to Services -> EKS -> dml-dev-eksdemo1 -> Configuration -> Details -> OpenID Connect provider URL
 
 # EKS OpenID Connect Well Known Configuration URL
 <EKS OpenID Connect provider URL>/.well-known/openid-configuration

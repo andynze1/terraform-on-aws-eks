@@ -49,7 +49,7 @@
         },
         {
             "Description": "EKS created security group applied to ENI that is attached to EKS Control Plane master nodes, as well as any managed workloads.",
-            "GroupName": "eks-cluster-sg-hr-dev-eksdemo1-1315923164",
+            "GroupName": "eks-cluster-sg-dml-dev-eksdemo1-1315923164",
             "IpPermissions": [
                 {
                     "IpProtocol": "-1",
@@ -82,14 +82,14 @@
             "Tags": [
                 {
                     "Key": "aws:eks:cluster-name",
-                    "Value": "hr-dev-eksdemo1"
+                    "Value": "dml-dev-eksdemo1"
                 },
                 {
                     "Key": "Name",
-                    "Value": "eks-cluster-sg-hr-dev-eksdemo1-1315923164"
+                    "Value": "eks-cluster-sg-dml-dev-eksdemo1-1315923164"
                 },
                 {
-                    "Key": "kubernetes.io/cluster/hr-dev-eksdemo1",
+                    "Key": "kubernetes.io/cluster/dml-dev-eksdemo1",
                     "Value": "owned"
                 }
             ],
@@ -247,7 +247,7 @@
         },
         {
             "Description": "Security Group with SSH port open for everybody (IPv4 CIDR), egress ports are all world open",
-            "GroupName": "hr-dev-jenkins-sg-20240820162606276600000009",
+            "GroupName": "dml-dev-jenkins-sg-20240820162606276600000009",
             "IpPermissions": [
                 {
                     "FromPort": 9000,
@@ -330,7 +330,7 @@
             "Tags": [
                 {
                     "Key": "Name",
-                    "Value": "hr-dev-jenkins-sg"
+                    "Value": "dml-dev-jenkins-sg"
                 },
                 {
                     "Key": "owners",
@@ -353,7 +353,7 @@
             "Tags": [
                 {
                     "Key": "Name",
-                    "Value": "hr-dev-eksdemo1-default"
+                    "Value": "dml-dev-eksdemo1-default"
                 },
                 {
                     "Key": "owners",

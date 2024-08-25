@@ -211,7 +211,7 @@ Observation: It should work
 ## Step-11: Test using Bastion Host inside VPC with NLB DNS Name
 ```t
 # Start Bastion Host
-Go to Services -> EC2 -> Instances -> hr-dev-BastionHost -> Instance State -> Start Instance
+Go to Services -> EC2 -> Instances -> dml-dev-BastionHost -> Instance State -> Start Instance
 
 # Connect to Bastion Host
 ssh -i <PRIVATE_KEY> ec2-user@<BASTION-HOST-PublicIP>

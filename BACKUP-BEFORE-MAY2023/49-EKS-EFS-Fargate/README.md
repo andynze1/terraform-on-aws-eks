@@ -34,7 +34,7 @@ terraform apply -auto-approve
 
 # List Fargate Profiles
 aws eks list-fargate-profiles --cluster <CLUSTER_NAME>
-aws eks list-fargate-profiles --cluster hr-dev-eksdemo1
+aws eks list-fargate-profiles --cluster dml-dev-eksdemo1
 ```
 
 ## Step-03: Project-04: Review Terraform Manifests

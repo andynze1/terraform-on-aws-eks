@@ -201,14 +201,14 @@ terraform apply -auto-approve
 ```t
 # Configure kubeconfig for kubectl
 aws eks --region <region-code> update-kubeconfig --name <cluster_name>
-aws eks --region us-east-1 update-kubeconfig --name hr-dev-eksdemo1
+aws eks --region us-east-1 update-kubeconfig --name dml-dev-eksdemo1
 
 # Verify Kubernetes Worker Nodes using kubectl
 kubectl get nodes
 kubectl get nodes -o wide
 
 # List Fargate Profiles
-aws eks list-fargate-profiles --cluster=hr-dev-eksdemo1
+aws eks list-fargate-profiles --cluster=dml-dev-eksdemo1
 ```
 
 ## Step-09: Patch CoreDNS Pod in kube-system to run on EKS Fargate Profile
@@ -315,7 +315,7 @@ http://fargate-profile-demo-501.stacksimplify.com/app2/index.html
 ```
 
 ## Step-13: Verify all the pods on EKS Cluster using AWS Mgmt Console
-- Go to Services -> Elastic Kubernetes Service -> Clusters -> hr-dev-eksdemo1
+- Go to Services -> Elastic Kubernetes Service -> Clusters -> dml-dev-eksdemo1
 - In **Resources** Tab
 - Under **Workloads**, click on **Pods** and verify
 

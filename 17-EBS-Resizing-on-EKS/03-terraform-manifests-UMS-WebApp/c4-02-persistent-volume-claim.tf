@@ -8,7 +8,7 @@ resource "kubernetes_persistent_volume_claim_v1" "pvc" {
     storage_class_name = kubernetes_storage_class_v1.ebs_sc.metadata.0.name 
     resources {
       requests = {
-        storage = "4Gi"
+        storage = "2Gi"
         #storage = "6Gi"
       }
     }

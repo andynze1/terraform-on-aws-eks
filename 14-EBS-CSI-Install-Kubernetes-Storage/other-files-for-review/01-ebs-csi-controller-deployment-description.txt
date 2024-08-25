@@ -3,15 +3,15 @@ Name:                   ebs-csi-controller
 Namespace:              kube-system
 CreationTimestamp:      Wed, 05 Jan 2022 09:38:32 +0530
 Labels:                 app.kubernetes.io/component=csi-driver
-                        app.kubernetes.io/instance=hr-dev-aws-ebs-csi-driver
+                        app.kubernetes.io/instance=dml-dev-aws-ebs-csi-driver
                         app.kubernetes.io/managed-by=Helm
                         app.kubernetes.io/name=aws-ebs-csi-driver
                         app.kubernetes.io/version=1.5.0
                         helm.sh/chart=aws-ebs-csi-driver-2.6.2
 Annotations:            deployment.kubernetes.io/revision: 1
-                        meta.helm.sh/release-name: hr-dev-aws-ebs-csi-driver
+                        meta.helm.sh/release-name: dml-dev-aws-ebs-csi-driver
                         meta.helm.sh/release-namespace: kube-system
-Selector:               app=ebs-csi-controller,app.kubernetes.io/instance=hr-dev-aws-ebs-csi-driver,app.kubernetes.io/name=aws-ebs-csi-driver
+Selector:               app=ebs-csi-controller,app.kubernetes.io/instance=dml-dev-aws-ebs-csi-driver,app.kubernetes.io/name=aws-ebs-csi-driver
 Replicas:               2 desired | 2 updated | 2 total | 2 available | 0 unavailable
 StrategyType:           RollingUpdate
 MinReadySeconds:        0
@@ -19,7 +19,7 @@ RollingUpdateStrategy:  25% max unavailable, 25% max surge
 Pod Template:
   Labels:           app=ebs-csi-controller
                     app.kubernetes.io/component=csi-driver
-                    app.kubernetes.io/instance=hr-dev-aws-ebs-csi-driver
+                    app.kubernetes.io/instance=dml-dev-aws-ebs-csi-driver
                     app.kubernetes.io/managed-by=Helm
                     app.kubernetes.io/name=aws-ebs-csi-driver
                     app.kubernetes.io/version=1.5.0

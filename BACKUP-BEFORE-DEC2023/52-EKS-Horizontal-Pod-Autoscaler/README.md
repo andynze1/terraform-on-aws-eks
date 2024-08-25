@@ -26,7 +26,7 @@ terraform state list
 
 # Configure kubeconfig for kubectl
 aws eks --region <region-code> update-kubeconfig --name <cluster_name>
-aws eks --region us-east-1 update-kubeconfig --name hr-dev-eksdemo1
+aws eks --region us-east-1 update-kubeconfig --name dml-dev-eksdemo1
 
 # Verify Kubernetes Worker Nodes using kubectl
 kubectl get nodes
@@ -95,7 +95,7 @@ kubectl -n kube-system get pods
 
 # Verify Metrics Server Logs
 kubectl -n kube-system logs -f <POD-NAME>
-kubectl -n kube-system logs -f hr-dev-metrics-server-664b99d749-vgnqd
+kubectl -n kube-system logs -f dml-dev-metrics-server-664b99d749-vgnqd
 
 # Verify if metrics for pods are displayed (After install of Metrics Server)
 kubectl top pods -n kube-system

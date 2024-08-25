@@ -26,7 +26,7 @@ terraform state list
 
 # Configure kubeconfig for kubectl
 aws eks --region <region-code> update-kubeconfig --name <cluster_name>
-aws eks --region us-east-1 update-kubeconfig --name hr-dev-eksdemo1
+aws eks --region us-east-1 update-kubeconfig --name dml-dev-eksdemo1
 
 # Verify Kubernetes Worker Nodes using kubectl
 kubectl get nodes
@@ -86,7 +86,7 @@ metadata:
 
 ## Step-03: Create FluentBit ConfigMap YAML Manifest
 - **File Name:** `02-cwagent-container-insights/02-cw-fluentbit-configmap.yaml`
-- Update Cluster Name `cluster.name: hr-dev-eksdemo1`
+- Update Cluster Name `cluster.name: dml-dev-eksdemo1`
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -94,7 +94,7 @@ metadata:
   name: fluent-bit-cluster-info
   namespace: amazon-cloudwatch
 data:
-  cluster.name: hr-dev-eksdemo1
+  cluster.name: dml-dev-eksdemo1
   http.port: "2020"
   http.server: "On"
   logs.region: us-east-1
@@ -243,7 +243,7 @@ kubectl apply -f 03-sample-app-test-container-insights
 - Go to Services -> CloudWatch -> Insights -> Container Insights
 - Resources: 
   - amazon-cloudwatch  (Type: Namespace)
-  - hr-dev-eksdemo1 (Type: Cluster)
+  - dml-dev-eksdemo1 (Type: Cluster)
   - myap1-deployment (Type: EKS Pod)
 - Alarms
   - Review Alarms
@@ -272,7 +272,7 @@ kubectl apply -f 03-sample-app-test-container-insights
 ## Step-10: AWS CloudWatch Logs
 ### Step-10-01: EKS Cluster Control Plane Logs
 - Go to Services -> CloudWatch -> Logs -> Log Groups
-- **Log Group:** 	/aws/eks/hr-dev-eksdemo1/cluster
+- **Log Group:** 	/aws/eks/dml-dev-eksdemo1/cluster
 - For a different clustername it should be `/aws/eks/<CLUSTER_NAME>/cluster`
 - This is created when we have enabled the argument in EKS Cluster Resource `aws_eks_cluster`
 - **File Name:** 01-ekscluster-terraform-manifests/c5-06-eks-cluster.tf
@@ -283,15 +283,15 @@ enabled_cluster_log_types = ["api", "audit", "authenticator", "controllerManager
 
 ### Step-10-02: Performance Logs
 - These logs are enabled when we install the **Cloud Watch Container Insights** as part of `step-04` of this section
-- **Log Group:** /aws/containerinsights/hr-dev-eksdemo1/performance
+- **Log Group:** /aws/containerinsights/dml-dev-eksdemo1/performance
 - For a different clustername it should be `/aws/containerinsights/<CLUSTER_NAME>/performance`
 
 ### Step-10-03: Fluent Bit Logs
 - These logs are enabled when we install the **Fluent Bit** as part of `step-06` of this section
 - **Log Groups:**
-  - /aws/containerinsights/hr-dev-eksdemo1/application
-  - /aws/containerinsights/hr-dev-eksdemo1/dataplane
-  - /aws/containerinsights/hr-dev-eksdemo1/host
+  - /aws/containerinsights/dml-dev-eksdemo1/application
+  - /aws/containerinsights/dml-dev-eksdemo1/dataplane
+  - /aws/containerinsights/dml-dev-eksdemo1/host
 - **Log Groups:** For a different clustername it should be
   - /aws/containerinsights/<CLUSTER_NAME>/application
   - /aws/containerinsights/<CLUSTER_NAME>/dataplane
@@ -306,7 +306,7 @@ curl http://<NLB-DNS-URL>
 
 # Verify Logs
 1. Go to Services -> CloudWatch -> Logs -> Log Groups
-2. Click on "/aws/containerinsights/hr-dev-eksdemo1/application"
+2. Click on "/aws/containerinsights/dml-dev-eksdemo1/application"
 3. Search for Log Steam containing name "myapp1"
 Example: ip-10-0-1-63.ec2.internal-application.var.log.containers.myapp1-deployment-58ccb86d9-2q88h_default_myapp1-container-14cfc9c146e126db0d58d2a6534e2c21a37a954fbda1e28f46bfe5f5ace18c84.log
 4. Verify that log

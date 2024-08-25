@@ -22,12 +22,12 @@ aws sts get-caller-identity
 Kalyans-MacBook-Pro:01-ekscluster-terraform-manifests kdaida$ aws sts get-caller-identity
 {
     "UserId": "AIDASUF7HC7SSJRDGMFBM",
-    "Account": "180789647333",
-    "Arn": "arn:aws:iam::180789647333:user/kalyandev"
+    "Account": "461086874723",
+    "Arn": "arn:aws:iam::461086874723:user/admin"
 }
 
 # Make a note of  EKS Cluster Creator user
-EKS_Cluster_Create_User: kalyandev (in my environment this is the user)
+EKS_Cluster_Create_User: admin (in my environment this is the user)
 ```
 
 ## Step-03: Pre-requisite: Create EKS Cluster
@@ -49,7 +49,7 @@ terraform apply -auto-approve
 
 # Configure kubeconfig for kubectl
 aws eks --region <region-code> update-kubeconfig --name <cluster_name>
-aws eks --region us-east-1 update-kubeconfig --name hr-dev-eksdemo1
+aws eks --region us-east-1 update-kubeconfig --name dml-dev-eksdemo1
 
 # Verify Kubernetes Worker Nodes using kubectl
 kubectl get nodes
@@ -100,7 +100,7 @@ Default output format: json
 
 # Get current user configured in AWS CLI
 aws sts get-caller-identity
-Observation: Should see the user "kalyandev" (EKS_Cluster_Create_User) from default profile
+Observation: Should see the user "admin" (EKS_Cluster_Create_User) from default profile
 ```
 
 ## Step-05: Configure kubeconfig and access EKS resources using kubectl
@@ -111,7 +111,7 @@ cat $HOME/.kube/config
 cat $HOME/.kube/config
 
 # Configure kubeconfig for eksadmin1 AWS CLI profile
-aws eks --region us-east-1 update-kubeconfig --name hr-dev-eksdemo1 --profile eksadmin1
+aws eks --region us-east-1 update-kubeconfig --name dml-dev-eksdemo1 --profile eksadmin1
 
 # Verify kubeconfig file
 cat $HOME/.kube/config
@@ -126,16 +126,16 @@ Observation:
 1. We should fail in accessing the EKS Cluster resources using kubectl
 
 ## Sample Output
-Kalyans-Mac-mini:01-ekscluster-terraform-manifests kalyanreddy$ kubectl get nodes
+andynze@macbook:01-ekscluster-terraform-manifests andynze$ kubectl get nodes
 error: You must be logged in to the server (Unauthorized)
-Kalyans-Mac-mini:01-ekscluster-terraform-manifests kalyanreddy$ 
+andynze@macbook:01-ekscluster-terraform-manifests andynze$ 
 ```
 
 ## Step-06: Access EKS Cluster resources using AWS Mgmt Console
 - Login to AWS Mgmt Console
   - **Username:** eksadmin1
   - **Password:** @EKSUser101
-- Go to Services -> Elastic Kubernetes Service -> Clusters -> Click on **hr-dev-eksdemo1**
+- Go to Services -> Elastic Kubernetes Service -> Clusters -> Click on **dml-dev-eksdemo1**
 - **Error / Warning**
 ```t
 # Error / Warning
@@ -150,9 +150,9 @@ kubectl -n kube-system get configmap aws-auth -o yaml
 Observation: Currently, eksadmin1 is configured as AWS CLI default profile, switch back to default profile. 
 
 # Configure kubeconfig for default AWS CLI profile (Switch back to EKS_Cluster_Create_User to perform these steps)
-aws eks --region us-east-1 update-kubeconfig --name hr-dev-eksdemo1 
+aws eks --region us-east-1 update-kubeconfig --name dml-dev-eksdemo1 
 [or]
-aws eks --region us-east-1 update-kubeconfig --name hr-dev-eksdemo1 --profile default
+aws eks --region us-east-1 update-kubeconfig --name dml-dev-eksdemo1 --profile default
 
 # Verify kubeconfig file
 cat $HOME/.kube/config
@@ -172,7 +172,7 @@ data:
     - groups:
       - system:bootstrappers
       - system:nodes
-      rolearn: arn:aws:iam::180789647333:role/hr-dev-eks-nodegroup-role
+      rolearn: arn:aws:iam::461086874723:role/dml-dev-eks-nodegroup-role
       username: system:node:{{EC2PrivateDNSName}}
 kind: ConfigMap
 metadata:
@@ -200,7 +200,7 @@ kubectl -n kube-system edit configmap aws-auth
 
 ## mapUsers TEMPLATE - Replaced with IAM User ARN
   mapUsers: |
-    - userarn: arn:aws:iam::180789647333:user/eksadmin1
+    - userarn: arn:aws:iam::461086874723:user/eksadmin1
       username: eksadmin1
       groups:
         - system:masters        
@@ -219,10 +219,10 @@ data:
     - groups:
       - system:bootstrappers
       - system:nodes
-      rolearn: arn:aws:iam::180789647333:role/hr-dev-eks-nodegroup-role
+      rolearn: arn:aws:iam::461086874723:role/dml-dev-eks-nodegroup-role
       username: system:node:{{EC2PrivateDNSName}}
   mapUsers: |
-    - userarn: arn:aws:iam::180789647333:user/eksadmin1
+    - userarn: arn:aws:iam::461086874723:user/eksadmin1
       username: eksadmin1
       groups:
         - system:masters
@@ -242,7 +242,7 @@ metadata:
 cat $HOME/.kube/config
 
 # Configure kubeconfig for eksadmin1 AWS CLI profile
-aws eks --region us-east-1 update-kubeconfig --name hr-dev-eksdemo1 --profile eksadmin1
+aws eks --region us-east-1 update-kubeconfig --name dml-dev-eksdemo1 --profile eksadmin1
 
 # Verify kubeconfig file
 cat $HOME/.kube/config
@@ -260,7 +260,7 @@ Observation:
 - Login to AWS Mgmt Console
   - **Username:** eksadmin1
   - **Password:** @EKSUser101
-- Go to Services -> Elastic Kubernetes Service -> Clusters -> Click on **hr-dev-eksdemo1**
+- Go to Services -> Elastic Kubernetes Service -> Clusters -> Click on **dml-dev-eksdemo1**
 - All 3 tabs should be accessible to us without any issues with eksadmin1 user
   - Overview Tab
   - Workloads Tab

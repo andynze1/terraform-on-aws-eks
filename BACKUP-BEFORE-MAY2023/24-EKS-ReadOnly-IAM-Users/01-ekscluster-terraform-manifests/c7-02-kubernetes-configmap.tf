@@ -4,7 +4,7 @@ output "account_id" {
   value = data.aws_caller_identity.current.account_id
 }
 
-# Sample Role Format: arn:aws:iam::180789647333:role/hr-dev-eks-nodegroup-role
+# Sample Role Format: arn:aws:iam::461086874723:role/dml-dev-eks-nodegroup-role
 # Locals Block
 locals {
   configmap_roles = [

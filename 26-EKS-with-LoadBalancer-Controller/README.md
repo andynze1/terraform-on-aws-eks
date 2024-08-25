@@ -233,14 +233,14 @@ terraform apply -auto-approve
 
 # Configure kubeconfig for kubectl
 aws eks --region <region-code> update-kubeconfig --name <cluster_name>
-aws eks --region us-east-1 update-kubeconfig --name hr-dev-eksdemo1
+aws eks --region us-east-1 update-kubeconfig --name dml-dev-eksdemo1
 
 # Verify Kubernetes Worker Nodes using kubectl
 kubectl get nodes
 kubectl get nodes -o wide
 
 # Stop the Bastion Host
-Go to AWS Mgmt Console -> Services -> EC2 -> Instances -> hr-dev-Bastion-Host -> Instance State -> Stop Instance
+Go to AWS Mgmt Console -> Services -> EC2 -> Instances -> dml-dev-Bastion-Host -> Instance State -> Stop Instance
 ```
 
 ## Step-03: c1-versions.tf
@@ -549,10 +549,10 @@ kubectl -n kube-system get deployment aws-load-balancer-controller
 kubectl -n kube-system describe deployment aws-load-balancer-controller
 
 # Sample Output
-Kalyans-Mac-mini:02-lbc-install-terraform-manifests kalyanreddy$ kubectl -n kube-system get deployment aws-load-balancer-controller
+andynze@macbook:02-lbc-install-terraform-manifests andynze$ kubectl -n kube-system get deployment aws-load-balancer-controller
 NAME                           READY   UP-TO-DATE   AVAILABLE   AGE
 aws-load-balancer-controller   2/2     2            2           18m
-Kalyans-Mac-mini:02-lbc-install-terraform-manifests kalyanreddy$ 
+andynze@macbook:02-lbc-install-terraform-manifests andynze$ 
 
 
 # Verify AWS Load Balancer Controller Webhook service created
@@ -561,10 +561,10 @@ kubectl -n kube-system get svc aws-load-balancer-webhook-service
 kubectl -n kube-system describe svc aws-load-balancer-webhook-service
 
 # Sample Output
-Kalyans-Mac-mini:02-lbc-install-terraform-manifests kalyanreddy$ kubectl -n kube-system get svc aws-load-balancer-webhook-service
+andynze@macbook:02-lbc-install-terraform-manifests andynze$ kubectl -n kube-system get svc aws-load-balancer-webhook-service
 NAME                                TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
 aws-load-balancer-webhook-service   ClusterIP   172.20.110.33   <none>        443/TCP   18m
-Kalyans-Mac-mini:02-lbc-install-terraform-manifests kalyanreddy$ 
+andynze@macbook:02-lbc-install-terraform-manifests andynze$ 
 
 # Verify Labels in Service and Selector Labels in Deployment
 kubectl -n kube-system get svc aws-load-balancer-webhook-service -o yaml

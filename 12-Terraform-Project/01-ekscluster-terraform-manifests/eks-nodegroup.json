@@ -1,8 +1,8 @@
 {
     "nodegroup": {
-        "nodegroupName": "hr-dev-eks-ng-public",
-        "nodegroupArn": "arn:aws:eks:us-east-1:461086874723:nodegroup/hr-dev-eksdemo1/hr-dev-eks-ng-public/b4c8b89c-cdd2-e7ee-87e7-8bd821880f9c",
-        "clusterName": "hr-dev-eksdemo1",
+        "nodegroupName": "dml-dev-eks-ng-public",
+        "nodegroupArn": "arn:aws:eks:us-east-1:461086874723:nodegroup/dml-dev-eksdemo1/dml-dev-eks-ng-public/b4c8b89c-cdd2-e7ee-87e7-8bd821880f9c",
+        "clusterName": "dml-dev-eksdemo1",
         "releaseVersion": "ami-0f017efb82ee7b952",
         "createdAt": "2024-08-20T14:18:08.082000-05:00",
         "modifiedAt": "2024-08-20T14:41:30.517000-05:00",
@@ -18,11 +18,11 @@
             "subnet-076ea28e3948e4509"
         ],
         "amiType": "CUSTOM",
-        "nodeRole": "arn:aws:iam::461086874723:role/hr-dev-eks-nodegroup-role",
+        "nodeRole": "arn:aws:iam::461086874723:role/dml-dev-eks-nodegroup-role",
         "resources": {
             "autoScalingGroups": [
                 {
-                    "name": "eks-hr-dev-eks-ng-public-b4c8b89c-cdd2-e7ee-87e7-8bd821880f9c"
+                    "name": "eks-dml-dev-eks-ng-public-b4c8b89c-cdd2-e7ee-87e7-8bd821880f9c"
                 }
             ]
         },

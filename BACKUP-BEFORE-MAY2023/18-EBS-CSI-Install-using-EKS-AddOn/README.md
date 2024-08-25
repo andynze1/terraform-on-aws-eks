@@ -22,7 +22,7 @@ terraform state list
 
 # Configure kubeconfig for kubectl
 aws eks --region <region-code> update-kubeconfig --name <cluster_name>
-aws eks --region us-east-1 update-kubeconfig --name hr-dev-eksdemo1
+aws eks --region us-east-1 update-kubeconfig --name dml-dev-eksdemo1
 
 # List EKS Worker Nodes
 kubectl get nodes -o wide
@@ -100,7 +100,7 @@ output "ebs_eks_addon_id" {
 ## Step-08: Create EBS CSI Driver EKS AddOn: Execute TF Commands
 ```t
 # EKS List AddOns for a EKS Cluster
-aws eks list-addons --cluster-name hr-dev-eksdemo1
+aws eks list-addons --cluster-name dml-dev-eksdemo1
 Observation:
 1. Before installing the addon we will check if any addons installed
 
@@ -123,7 +123,7 @@ terraform apply -auto-approve
 ## Step-09: Verify EBS CSI Driver installed via EKS Addon
 ```t
 # EKS List AddOns for a EKS Cluster
-aws eks list-addons --cluster-name hr-dev-eksdemo1
+aws eks list-addons --cluster-name dml-dev-eksdemo1
 
 ## Sample Output
 {
@@ -134,7 +134,7 @@ aws eks list-addons --cluster-name hr-dev-eksdemo1
 
 # Configure kubeconfig for kubectl
 aws eks --region <region-code> update-kubeconfig --name <cluster_name>
-aws eks --region us-east-1 update-kubeconfig --name hr-dev-eksdemo1
+aws eks --region us-east-1 update-kubeconfig --name dml-dev-eksdemo1
 
 # List EBS Pods from kube-system namespace
 kubectl -n kube-system get pods 
@@ -159,7 +159,7 @@ Observation:
 kubectl -n kube-system describe sa ebs-csi-controller-sa
 Observation:
 1. Verify the "Annotations" field and you should find our IAM Role created for EBS CSI is associated with EKS Cluster EBS Service Account.
-Annotations:         eks.amazonaws.com/role-arn: arn:aws:iam::180789647333:role/hr-dev-ebs-csi-iam-role
+Annotations:         eks.amazonaws.com/role-arn: arn:aws:iam::461086874723:role/dml-dev-ebs-csi-iam-role
 2. Also review the labels
 Labels:              app.kubernetes.io/managed-by=EKS
                      app.kubernetes.io/name=aws-ebs-csi-driver

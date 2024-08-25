@@ -4,35 +4,35 @@ data:
     - groups:
       - system:bootstrappers
       - system:nodes
-      rolearn: arn:aws:iam::180789647333:role/hr-dev-eks-nodegroup-role
+      rolearn: arn:aws:iam::461086874723:role/dml-dev-eks-nodegroup-role
       username: system:node:{{EC2PrivateDNSName}}
     - groups:
       - system:masters
-      rolearn: arn:aws:iam::180789647333:role/hr-dev-eks-admin-role
+      rolearn: arn:aws:iam::461086874723:role/dml-dev-eks-admin-role
       username: eks-admin
     - groups:
       - eks-readonly-group
-      rolearn: arn:aws:iam::180789647333:role/hr-dev-eks-readonly-role
+      rolearn: arn:aws:iam::461086874723:role/dml-dev-eks-readonly-role
       username: eks-readonly
     - groups:
       - eks-developer-group
-      rolearn: arn:aws:iam::180789647333:role/hr-dev-eks-developer-role
+      rolearn: arn:aws:iam::461086874723:role/dml-dev-eks-developer-role
       username: eks-developer
     - groups:
       - system:bootstrappers
       - system:nodes
       - system:node-proxier
-      rolearn: arn:aws:iam::180789647333:role/hr-dev-eks-fargate-profile-role-apps
+      rolearn: arn:aws:iam::461086874723:role/dml-dev-eks-fargate-profile-role-apps
       username: system:node:{{SessionName}}
   mapUsers: |
     - "groups":
       - "system:masters"
-      "userarn": "arn:aws:iam::180789647333:user/hr-dev-eksadmin2"
-      "username": "hr-dev-eksadmin2"
+      "userarn": "arn:aws:iam::461086874723:user/dml-dev-eksadmin2"
+      "username": "dml-dev-eksadmin2"
     - "groups":
       - "system:masters"
-      "userarn": "arn:aws:iam::180789647333:user/hr-dev-eksadmin1"
-      "username": "hr-dev-eksadmin1"
+      "userarn": "arn:aws:iam::461086874723:user/dml-dev-eksadmin1"
+      "username": "dml-dev-eksadmin1"
 kind: ConfigMap
 metadata:
   creationTimestamp: "2022-05-15T00:39:27Z"

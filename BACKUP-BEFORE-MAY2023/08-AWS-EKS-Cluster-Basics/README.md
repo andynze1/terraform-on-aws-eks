@@ -415,7 +415,7 @@ terraform output
 ```t
 # Configure kubeconfig for kubectl
 aws eks --region <region-code> update-kubeconfig --name <cluster_name>
-aws eks --region us-east-1 update-kubeconfig --name hr-stag-eksdemo1
+aws eks --region us-east-1 update-kubeconfig --name dml-stag-eksdemo1
 
 # List Worker Nodes
 kubectl get nodes
@@ -650,5 +650,5 @@ Observation:
 ```t
 # Stop EC2 Instance (Bastion Host)
 1. Login to AWS Mgmt Console
-2. Go to Services -> EC2 -> Instances -> hr-stag-BastionHost -> Instance State -> Stop
+2. Go to Services -> EC2 -> Instances -> dml-stag-BastionHost -> Instance State -> Stop
 ```

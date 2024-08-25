@@ -84,7 +84,7 @@ Go to Services -> EFS -> File Systems -> efs-demo -> Network Tab
 Go to Services -> EC2 -> Network & Security -> Network Interfaces -> GET THE ENI ID from Mount Targets
 
 # Security Groups
-Go to Services -> EC2 -> Network & Security -> Security Groups -> hr-dev-efs-allow-nfs-from-eks-vpc
+Go to Services -> EC2 -> Network & Security -> Security Groups -> dml-dev-efs-allow-nfs-from-eks-vpc
 ```
 
 ## Step-08: Connect to efs-write-app Kubernetes pods and Verify 

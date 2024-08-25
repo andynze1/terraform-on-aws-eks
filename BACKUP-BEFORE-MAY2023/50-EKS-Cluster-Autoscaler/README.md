@@ -240,14 +240,14 @@ terraform apply -auto-approve
 kubectl -n kube-system get pods
 
 # Verify Logs
-kubectl -n kube-system logs -f $(kubectl -n kube-system get pods | egrep -o 'hr-dev-ca-aws-cluster-autoscaler-[A-Za-z0-9-]+')
+kubectl -n kube-system logs -f $(kubectl -n kube-system get pods | egrep -o 'dml-dev-ca-aws-cluster-autoscaler-[A-Za-z0-9-]+')
 
 # List Service Account
 kubectl -n kube-system get sa
 kubectl -n kube-system describe sa cluster-autoscaler 
 Observation: 
 1. Review Annotations section for IAM Role annotated on Kubernetes Service Account
-2. Sample (Annotations:         eks.amazonaws.com/role-arn: arn:aws:iam::180789647333:role/hr-dev-cluster-autoscaler)
+2. Sample (Annotations:         eks.amazonaws.com/role-arn: arn:aws:iam::461086874723:role/dml-dev-cluster-autoscaler)
 
 # List Config Maps
 kubectl -n kube-system get cm 

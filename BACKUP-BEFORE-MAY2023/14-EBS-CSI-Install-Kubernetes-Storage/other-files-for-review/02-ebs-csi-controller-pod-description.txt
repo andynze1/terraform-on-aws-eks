@@ -16,7 +16,7 @@ Node:                 ip-10-0-101-61.ec2.internal/10.0.101.61
 Start Time:           Wed, 05 Jan 2022 09:38:32 +0530
 Labels:               app=ebs-csi-controller
                       app.kubernetes.io/component=csi-driver
-                      app.kubernetes.io/instance=hr-dev-aws-ebs-csi-driver
+                      app.kubernetes.io/instance=dml-dev-aws-ebs-csi-driver
                       app.kubernetes.io/managed-by=Helm
                       app.kubernetes.io/name=aws-ebs-csi-driver
                       app.kubernetes.io/version=1.5.0
@@ -53,7 +53,7 @@ Containers:
       AWS_SECRET_ACCESS_KEY:        <set to the key 'access_key' in secret 'aws-secret'>  Optional: true
       AWS_DEFAULT_REGION:           us-east-1
       AWS_REGION:                   us-east-1
-      AWS_ROLE_ARN:                 arn:aws:iam::180789647333:role/hr-dev-ebs-csi-iam-role
+      AWS_ROLE_ARN:                 arn:aws:iam::461086874723:role/dml-dev-ebs-csi-iam-role
       AWS_WEB_IDENTITY_TOKEN_FILE:  /var/run/secrets/eks.amazonaws.com/serviceaccount/token
     Mounts:
       /var/lib/csi/sockets/pluginproxy/ from socket-dir (rw)
@@ -80,7 +80,7 @@ Containers:
       ADDRESS:                      /var/lib/csi/sockets/pluginproxy/csi.sock
       AWS_DEFAULT_REGION:           us-east-1
       AWS_REGION:                   us-east-1
-      AWS_ROLE_ARN:                 arn:aws:iam::180789647333:role/hr-dev-ebs-csi-iam-role
+      AWS_ROLE_ARN:                 arn:aws:iam::461086874723:role/dml-dev-ebs-csi-iam-role
       AWS_WEB_IDENTITY_TOKEN_FILE:  /var/run/secrets/eks.amazonaws.com/serviceaccount/token
     Mounts:
       /var/lib/csi/sockets/pluginproxy/ from socket-dir (rw)
@@ -104,7 +104,7 @@ Containers:
       ADDRESS:                      /var/lib/csi/sockets/pluginproxy/csi.sock
       AWS_DEFAULT_REGION:           us-east-1
       AWS_REGION:                   us-east-1
-      AWS_ROLE_ARN:                 arn:aws:iam::180789647333:role/hr-dev-ebs-csi-iam-role
+      AWS_ROLE_ARN:                 arn:aws:iam::461086874723:role/dml-dev-ebs-csi-iam-role
       AWS_WEB_IDENTITY_TOKEN_FILE:  /var/run/secrets/eks.amazonaws.com/serviceaccount/token
     Mounts:
       /var/lib/csi/sockets/pluginproxy/ from socket-dir (rw)
@@ -127,7 +127,7 @@ Containers:
       ADDRESS:                      /var/lib/csi/sockets/pluginproxy/csi.sock
       AWS_DEFAULT_REGION:           us-east-1
       AWS_REGION:                   us-east-1
-      AWS_ROLE_ARN:                 arn:aws:iam::180789647333:role/hr-dev-ebs-csi-iam-role
+      AWS_ROLE_ARN:                 arn:aws:iam::461086874723:role/dml-dev-ebs-csi-iam-role
       AWS_WEB_IDENTITY_TOKEN_FILE:  /var/run/secrets/eks.amazonaws.com/serviceaccount/token
     Mounts:
       /var/lib/csi/sockets/pluginproxy/ from socket-dir (rw)
@@ -148,7 +148,7 @@ Containers:
     Environment:
       AWS_DEFAULT_REGION:           us-east-1
       AWS_REGION:                   us-east-1
-      AWS_ROLE_ARN:                 arn:aws:iam::180789647333:role/hr-dev-ebs-csi-iam-role
+      AWS_ROLE_ARN:                 arn:aws:iam::461086874723:role/dml-dev-ebs-csi-iam-role
       AWS_WEB_IDENTITY_TOKEN_FILE:  /var/run/secrets/eks.amazonaws.com/serviceaccount/token
     Mounts:
       /csi from socket-dir (rw)

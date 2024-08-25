@@ -1,23 +1,4 @@
 
-# resource "aws_route_table" "public" {
-#   vpc_id = module.vpc.vpc_id
-
-#   route {
-#     cidr_block = "0.0.0.0/0"
-#     gateway_id = aws_internet_gateway.igw.id
-#   }
-
-#   tags = {
-#     Name = "public-route-table"
-#   }
-# }
-
-# resource "aws_route_table_association" "public_subnet_assoc" {
-#   count          = length(module.vpc.public_subnets)
-#   subnet_id      = module.vpc.public_subnets[count.index]
-#   route_table_id = aws_route_table.public.id
-# }
-
 resource "aws_security_group_rule" "allow_port_31280" {
   type              = "ingress"
   from_port         = 31280
