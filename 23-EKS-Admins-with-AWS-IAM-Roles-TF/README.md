@@ -216,7 +216,7 @@ kubectl -n kube-system get configmap aws-auth -o yaml
 ## Step-11: Create IAM User Login Profile and User Security Credentials
 ```t
 # Set password for dml-dev-eksadmin3 user
-aws iam create-login-profile --user-name dml-dev-eksadmin3 --password @EKSUser101 --no-password-reset-required
+aws iam create-login-profile --user-name dml-dev-eksadmin3 --password Pleasesir1$ --no-password-reset-required
 
 # Create Security Credentials for IAM User and make a note of them
 aws iam create-access-key --user-name dml-dev-eksadmin3
@@ -226,10 +226,10 @@ andynze@macbook:01-ekscluster-terraform-manifests andynze$ aws iam create-access
 {
     "AccessKey": {
         "UserName": "dml-dev-eksadmin3",
-        "AccessKeyId": "AKIASUF7HC7SULAF7HPV",
+        "AccessKeyId": "AKIAWWWXLLRRQ5ETVK77",
         "Status": "Active",
-        "SecretAccessKey": "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",
-        "CreateDate": "2022-03-12T06:27:36+00:00"
+        "SecretAccessKey": "mtpCkC7tw4xyg0tR9nbxjjoduHSYi/+tVGB9lyGM",
+        "CreateDate": "2024-08-25T02:01:12+00:00"
     }
 }
 andynze@macbook:01-ekscluster-terraform-manifests andynze$ 
@@ -246,8 +246,8 @@ aws configure list-profiles
 
 # Configure aws cli eksadmin1 Profile 
 aws configure --profile dml-dev-eksadmin3
-AWS Access Key ID: AKIASUF7HC7SULAF7HPV
-AWS Secret Access Key: 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
+AWS Access Key ID: AKIAWWWXLLRRQ5ETVK77
+AWS Secret Access Key: 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
 Default region: us-east-1
 Default output format: json
 
@@ -276,10 +276,16 @@ andynze@macbook:01-ekscluster-terraform-manifests andynze$
 # Export AWS Account ID
 ACCOUNT_ID=$(aws sts get-caller-identity --query "Account" --output text)
 echo $ACCOUNT_ID
+export ACCOUNT_ID=461086874723
 
 # Assume IAM Role
-aws sts assume-role --role-arn "arn:aws:iam::<REPLACE-YOUR-ACCOUNT-ID>:role/eks-admin-role" --role-session-name eksadminsession201
-aws sts assume-role --role-arn "arn:aws:iam::$ACCOUNT_ID:role/dml-dev-eks-admin-role" --role-session-name eksadminsession201
+# aws sts assume-role --role-arn "arn:aws:iam::<REPLACE-YOUR-ACCOUNT-ID>:role/eks-admin-role" --role-session-name eksadminsession201
+# aws sts assume-role --role-arn "arn:aws:iam::$ACCOUNT_ID:role/dml-dev-eks-admin-role" --role-session-name eksadminsession201
+
+role_arn="arn:aws:iam::${ACCOUNT_ID}:role/dml-dev-eks-admin-role"
+echo $role_arn
+aws sts assume-role --role-arn $role_arn --role-session-name eksadminsession201
+
 
 # GET Values and replace here
 export AWS_ACCESS_KEY_ID=RoleAccessKeyID
@@ -297,7 +303,7 @@ aws sts get-caller-identity
 ## Sample Output
 andynze@macbook:01-ekscluster-terraform-manifests andynze$ aws sts get-caller-identity
 {
-    "UserId": "AROASUF7HC7SULHUW3YCH:eksadminsession201",
+    "UserId": "AROAWWWXLLRR3CJ4JIVJY:eksadminsession201",
     "Account": "461086874723",
     "Arn": "arn:aws:sts::461086874723:assumed-role/dml-dev-eks-admin-role/eksadminsession201"
 }
@@ -341,7 +347,7 @@ andynze@macbook:01-ekscluster-terraform-manifests andynze$
 ## Step-14: Login as dml-dev-eksadmin1 user AWS Mgmt Console and Switch Roles
 - Login to AWS Mgmt Console
   - **Username:** dml-dev-eksadmin1
-  - **Password:** @EKSUser101
+  - **Password:** Pleasesir1$
 - Go to EKS Servie: https://console.aws.amazon.com/eks/home?region=us-east-1#
 ```t
 # Error

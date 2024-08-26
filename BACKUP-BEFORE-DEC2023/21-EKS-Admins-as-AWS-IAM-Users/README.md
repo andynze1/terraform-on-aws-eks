@@ -158,7 +158,7 @@ terraform apply -auto-approve
 ### Step-08-01: Set Credentials for dml-dev-eksadmin1 user
 ```t
 # Set password for dml-dev-eksadmin1 user
-aws iam create-login-profile --user-name dml-dev-eksadmin1 --password @EKSUser101 --no-password-reset-required
+aws iam create-login-profile --user-name dml-dev-eksadmin1 --password Pleasesir1$ --no-password-reset-required
 
 # Create Security Credentials for IAM User and make a note of them
 aws iam create-access-key --user-name dml-dev-eksadmin1
@@ -178,7 +178,7 @@ User: dml-dev-eksadmin1
 ### Step-08-02: Access EKS  Service using AWS Mgmt Console
 - Login and access EKS Service using AWS Mgmt Console
   - **Username:** dml-dev-eksadmin1
-  - **Password:** @EKSUser101
+  - **Password:** Pleasesir1$
 - Go to  Services -> Elastic Kubernetes Service -> dml-dev-eksdemo1
   - Overview Tab
   - Workloads Tab
@@ -237,7 +237,7 @@ Observation:
 ### Step-09-01: Set Credentials for dml-dev-eksadmin2 user
 ```t
 # Set password for dml-dev-eksadmin2 user
-aws iam create-login-profile --user-name dml-dev-eksadmin2 --password @EKSUser101 --no-password-reset-required
+aws iam create-login-profile --user-name dml-dev-eksadmin2 --password Pleasesir1$ --no-password-reset-required
 
 # Create Security Credentials for IAM User and make a note of them
 aws iam create-access-key --user-name dml-dev-eksadmin2
@@ -257,7 +257,7 @@ User: dml-dev-eksadmin1
 ### Step-09-02: Access EKS  Service using AWS Mgmt Console
 - Login and access EKS Service using AWS Mgmt Console
   - **Username:** dml-dev-eksadmin2
-  - **Password:** @EKSUser101
+  - **Password:** Pleasesir1$
 - Go to  Services -> Elastic Kubernetes Service -> dml-dev-eksdemo1
   - Overview Tab
   - Workloads Tab

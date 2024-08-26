@@ -291,7 +291,7 @@ kubectl -n kube-system get configmap aws-auth -o yaml
 ## Step-13: Create IAM User Login Profile and User Security Credentials
 ```t
 # Set password for dml-dev-eksreadonly1 user
-aws iam create-login-profile --user-name dml-dev-eksreadonly1 --password @EKSUser101 --no-password-reset-required
+aws iam create-login-profile --user-name dml-dev-eksreadonly1 --password Pleasesir1$ --no-password-reset-required
 
 # Create Security Credentials for IAM User and make a note of them
 aws iam create-access-key --user-name dml-dev-eksreadonly1
@@ -597,7 +597,7 @@ andynze@macbook:01-ekscluster-terraform-manifests andynze$
 ## Step-20: Login as dml-dev-eksreadonly1 user AWS Mgmt Console and Switch Roles
 - Login to AWS Mgmt Console
   - **Username:** dml-dev-eksreadonly1
-  - **Password:** @EKSUser101
+  - **Password:** Pleasesir1$
 - Go to EKS Servie: https://console.aws.amazon.com/eks/home?region=us-east-1#
 ```t
 # Error

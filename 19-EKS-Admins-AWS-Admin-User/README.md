@@ -65,7 +65,7 @@ aws iam create-user --user-name eksadmin1
 aws iam attach-user-policy --policy-arn arn:aws:iam::aws:policy/AdministratorAccess --user-name eksadmin1
 
 # Set password for eksadmin1 user
-aws iam create-login-profile --user-name eksadmin1 --password @EKSUser101 --no-password-reset-required
+aws iam create-login-profile --user-name eksadmin1 --password Pleasesir1$ --no-password-reset-required
 
 # Create Security Credentials for IAM User and make a note of them
 aws iam create-access-key --user-name eksadmin1
@@ -134,7 +134,7 @@ andynze@macbook:01-ekscluster-terraform-manifests andynze$
 ## Step-06: Access EKS Cluster resources using AWS Mgmt Console
 - Login to AWS Mgmt Console
   - **Username:** eksadmin1
-  - **Password:** @EKSUser101
+  - **Password:** Pleasesir1$
 - Go to Services -> Elastic Kubernetes Service -> Clusters -> Click on **dml-dev-eksdemo1**
 - **Error / Warning**
 ```t
@@ -259,7 +259,7 @@ Observation:
 ## Step-10: Access EKS Cluster resources using AWS Mgmt Console
 - Login to AWS Mgmt Console
   - **Username:** eksadmin1
-  - **Password:** @EKSUser101
+  - **Password:** Pleasesir1$
 - Go to Services -> Elastic Kubernetes Service -> Clusters -> Click on **dml-dev-eksdemo1**
 - All 3 tabs should be accessible to us without any issues with eksadmin1 user
   - Overview Tab

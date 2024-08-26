@@ -174,7 +174,7 @@ aws iam add-user-to-group --group-name <GROUP> --user-name <USER>
 aws iam add-user-to-group --group-name eksadmins --user-name eksadmin1
 
 # Set password for eksadmin1 user
-aws iam create-login-profile --user-name eksadmin1 --password @EKSUser101 --no-password-reset-required
+aws iam create-login-profile --user-name eksadmin1 --password Pleasesir1$ --no-password-reset-required
 
 # Create Security Credentials for IAM User and make a note of them
 aws iam create-access-key --user-name eksadmin1
@@ -305,7 +305,7 @@ andynze@macbook:01-ekscluster-terraform-manifests andynze$
 ## Step-10: Login as eksadmin1 user AWS Mgmt Console and Switch Roles
 - Login to AWS Mgmt Console
   - Username: eksadmin1
-  - Password: @EKSUser101
+  - Password: Pleasesir1$
 - Go to EKS Servie: https://console.aws.amazon.com/eks/home?region=us-east-1#
 ```t
 # Error

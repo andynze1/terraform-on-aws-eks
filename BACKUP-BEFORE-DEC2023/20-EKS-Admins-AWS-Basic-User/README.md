@@ -49,7 +49,7 @@ Observation: Should see the user "admin" from "default" profile
 aws iam create-user --user-name eksadmin2
 
 # Set password for eksadmin1 user
-aws iam create-login-profile --user-name eksadmin2 --password @EKSUser101 --no-password-reset-required
+aws iam create-login-profile --user-name eksadmin2 --password Pleasesir1$ --no-password-reset-required
 
 # Create Security Credentials for IAM User and make a note of them
 aws iam create-access-key --user-name eksadmin2
@@ -75,7 +75,7 @@ User: eksadmin2
 ## Step-05: Access EKS Cluster resources using AWS Mgmt Console
 - Login to AWS Mgmt Console
   - **Username:** eksadmin2
-  - **Password:** @EKSUser101
+  - **Password:** Pleasesir1$
 - **Access URL:** https://console.aws.amazon.com/eks/home?region=us-east-1  
 - Go to Services -> Elastic Kubernetes Service -> Clusters -> Click on **dml-dev-eksdemo1**
 - **Error**
@@ -233,7 +233,7 @@ aws iam attach-user-policy --policy-arn arn:aws:iam::461086874723:policy/eks-ful
 ## Step-10: Access EKS Cluster resources using AWS Mgmt Console
 - Login to AWS Mgmt Console
   - **Username:** eksadmin2
-  - **Password:** @EKSUser101
+  - **Password:** Pleasesir1$
 - Go to Services -> Elastic Kubernetes Service -> Clusters -> Click on **dml-dev-eksdemo1**
 - All 3 tabs should be accessible to us without any issues with eksadmin1 user
   - Overview Tab
